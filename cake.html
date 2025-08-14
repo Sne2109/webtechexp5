@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sweet Bliss Bakery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      background: #c0392b;
+      color: white;
+      padding: 15px;
+      margin: 0;
+    }
+    .cake-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .cake {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      width: 200px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .cake img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .order-form {
+      background: white;
+      padding: 20px;
+      width: 400px;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .order-form input {
+      width: 100%;
+      padding: 5px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2980b9;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1f6391;
+    }
+    .bill {
+      margin-top: 15px;
+      padding: 10px;
+      background: #2ecc71;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sweet Bliss Bakery</h1>
+
+  <div class="cake-container">
+    <div class="cake">
+      <img src="https://www.cuisinart.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-us-cuisinart-sfra-Library/default/dwa8fa7eec/images/recipe-Images/classic-tiramisu-recipe.jpg?sw=1200&sh=1200&sm=fit" alt="Classic Tiramisu">
+      <p>Classic Tiramisu – Rs. 300</p>
+    </div>
+    <div class="cake">
+      <img src="https://richanddelish.com/wp-content/uploads/2023/06/vanilla-strawberry-cake-17-of-23.jpg" alt="French Vanilla">
+      <p>French Vanilla – Rs. 200</p>
+    </div>
+    <div class="cake">
+      <img src="https://images.archanaskitchen.com/images/recipes/dessert-recipes/Creme_caramel_custard_pudding_caramel_custard_Recipe_shutterstock_170464598_0a0a249911.jpg" alt="Caramel Custard">
+      <p>Caramel Custard – Rs. 250</p>
+    </div>
+    <div class="cake">
+      <img src="https://jambubakers.com/wp-content/uploads/2024/01/Genuine-Truffle-Pastry.jpg" alt="Heavenly Belgian">
+      <p>Heavenly Belgian – Rs. 350</p>
+    </div>
+  </div>
+
+  <div class="order-form">
+    <h2>Order Cake</h2>
+    Classic Tiramisu (Quantity): <input type="number" id="tiramisu" min="0" value="0">
+    French Vanilla (Quantity): <input type="number" id="vanilla" min="0" value="0">
+    Caramel Custard (Quantity): <input type="number" id="caramel" min="0" value="0">
+    Heavenly Belgian (Quantity): <input type="number" id="belgian" min="0" value="0">
+    <br><br>
+    <button onclick="calculateBill()">Place Order</button>
+    <div id="bill" class="bill" style="display:none;"></div>
+  </div>
+
+  <script>
+    function calculateBill() {
+      const prices = {
+        tiramisu: 300,
+        vanilla: 200,
+        caramel: 250,
+        belgian: 350
+      };
+
+      let total =
+        (document.getElementById("tiramisu").value * prices.tiramisu) +
+        (document.getElementById("vanilla").value * prices.vanilla) +
+        (document.getElementById("caramel").value * prices.caramel) +
+        (document.getElementById("belgian").value * prices.belgian);
+
+      document.getElementById("bill").style.display = "block";
+      document.getElementById("bill").innerHTML = `Total Price: Rs. ${total}`;
+    }
+  </script>
+
+</body>
+</html>
